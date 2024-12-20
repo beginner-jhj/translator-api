@@ -5,7 +5,13 @@ import serverless from "serverless-http";
 
 const app = express();
 
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: (origin, callBack) => {
+      callBack(null, true);
+    },
+  })
+);
 app.use(express.json());
 
 app.post("/translate", async (req, res) => {
