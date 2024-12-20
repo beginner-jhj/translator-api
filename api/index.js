@@ -7,11 +7,13 @@ const app = express();
 
 app.use(
   cors({
-    origin: (origin, callBack) => {
-      callBack(null, true);
-    },
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"], // 허용할 HTTP 메서드
+    allowedHeaders: ["Content-Type"], // 허용할 헤더
   })
 );
+
+app.options("*", cors());
 app.use(express.json());
 
 app.post("/translate", async (req, res) => {
