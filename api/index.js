@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { getTranslation } from "./translator.js";
+import serverless from "serverless-http";
 
 const app = express();
 
@@ -23,6 +24,4 @@ app.post("/translate", async (req, res) => {
   }
 });
 
-app.listen(8080, () => {
-  console.log("server is listening on port 8080");
-});
+export const handler = serverless(app);
