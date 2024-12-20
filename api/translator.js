@@ -1,5 +1,7 @@
-import "dotenv/config";
+import { config } from "dotenv";
 import * as deepl from "deepl-node";
+
+config({ path: "../.env" });
 
 const translationApiKey = process.env.DEEPL_API_KEY;
 const translator = new deepl.Translator(translationApiKey);
